@@ -8,7 +8,13 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import *
+import socket
 
+HOST = socket.gethostbyname(socket.gethostname())
+PORT = 9090
+
+data_server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+data_server.connect((HOST,PORT))
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\hüseyin\Desktop\Hotel Management System\build\assets\frame0")

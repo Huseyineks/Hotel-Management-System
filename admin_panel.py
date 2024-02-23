@@ -1,16 +1,19 @@
-import mysql.connector
+import socket
 
-db = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    passwd = "huseyinilkerh1905",
-    database ="HotelManagementDatabase"
-)
 
-mycursor = db.cursor()
+HOST = socket.gethostbyname(socket.gethostname())
+PORT = 9090
+server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+server.bind((HOST,PORT))
 
-mycursor.execute("CREATE TABLE People (person_id int PRIMARY KEY AUTO_INCREMENT,Name VARCHAR(50) NOT NULL,Username VARCHAR(50) NOT NULL,Email VARCHAR(100) NOT NULL)")
+server.listen(1)
 
-class DATABASE:
-    def __init__(self):
-        pass
+connected = True
+
+while connected:
+    conn,addr = server.accept()
+
+    message = conn.recv(1024).decode('utf-8')
+   
+    
+
