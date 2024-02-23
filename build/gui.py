@@ -177,7 +177,13 @@ class App:
         self.window.mainloop()
     def getInfo(self):
         
+        name = self.entry_1.get()
+        surname = self.entry_2.get()
+        email = self.entry_3.get()
+
+        package = name + ',' + surname + ',' + email
         
+        data_server.send(package.encode('utf-8'))
         
         self.cleanFrame()
           
