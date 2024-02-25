@@ -5,14 +5,14 @@ db = mysql.connector.connect(
     host = "localhost",
     user = "root",
     passwd = "huseyinilkerh1905",
-    database ="hotelmanagementdatabase"
+    database ="demand"
 )
 
 
 mycursor = db.cursor()
 
 
-mycursor.execute("CREATE DATABASE DEMAND")
+mycursor.execute("CREATE TABLE REQUEST (person_id int PRIMARY KEY AUTO_INCREMENT,Child int NOT NULL,Adult int NOT NULL,Room  int NOT NULL, Date VARCHAR(100) NOT NULL)")
 
 class DATABASE:
     def __init__(self,messages):
