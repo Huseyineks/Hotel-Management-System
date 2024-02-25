@@ -193,17 +193,201 @@ class App:
         self.entry_2.place_forget()
         self.entry_3.place_forget()
         self.frame.pack_forget()
+        Page(self.window)
 
 class Page:
     def __init__(self,master):
-        frame1 = Frame(master,height=379,width=630)
-        frame1.pack_propagate(False)
-        frame1.configure(bg="#FFFFFF")
-        frame1.pack()
-        label = Label(frame1,text="asdadsdd")
-        label.pack()
-        label1 = Label(frame1,text="asdadsdasdasdsadasdd")
-        label1.pack()
+        self.window = master
+        self.window.geometry("630x481")
+        self.window.configure(bg = "#FFFFFF")
+        self.frame = Frame(self.window,height=481,width=630)
+        self.frame.pack_propagate(False)
+        self.frame.configure(bg="#FFFFFF")
+        self.frame.pack()
+        canvas = Canvas(
+        self.frame,
+        bg = "#FFFFFF",
+        height = 481,
+        width = 630,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+        )
+
+        canvas.place(x = 0, y = 0)
+        button_image_1 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+        button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_1 clicked"),
+        relief="flat"
+        )
+        button_1.place(
+        x=282.0,
+        y=409.0,
+        width=66.0,
+        height=38.0
+        )
+
+        entry_image_1 = PhotoImage(
+        file=relative_to_assets("entry_4.png"))
+        entry_bg_1 = canvas.create_image(
+        141.5,
+        313.0,
+        image=entry_image_1
+        )
+        entry_1 = Entry(
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0
+        )
+        entry_1.place(
+        x=41.0,
+        y=294.0,
+        width=201.0,
+        height=36.0
+        )
+
+        entry_image_2 = PhotoImage(
+        file=relative_to_assets("entry_5.png"))
+        entry_bg_2 = canvas.create_image(
+        493.5,
+        313.0,
+        image=entry_image_2
+        )
+        entry_2 = Entry(
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0
+        )
+        entry_2.place(
+        x=393.0,
+        y=294.0,
+        width=201.0,
+        height=36.0
+        )
+
+        canvas.create_text(
+        389.0,
+        279.0,
+        anchor="nw",
+        text="Adult",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        entry_image_3 = PhotoImage(
+        file=relative_to_assets("entry_6.png"))
+        entry_bg_3 = canvas.create_image(
+        166.5,
+        378.0,
+        image=entry_image_3
+        )
+        entry_3 = Entry(
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0
+        )
+        entry_3.place(
+        x=66.0,
+        y=359.0,
+        width=201.0,
+        height=36.0
+        )
+
+        entry_image_4 = PhotoImage(
+        file=relative_to_assets("entry_7.png"))
+        entry_bg_4 = canvas.create_image(
+        463.5,
+        378.0,
+        image=entry_image_4
+        )
+        entry_4 = Entry(
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0
+        )
+        entry_4.place(
+        x=363.0,
+        y=359.0,
+        width=201.0,
+        height=36.0
+        )
+
+        image_image_1 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+        image_1 = canvas.create_image(
+        315.0,
+        130.0,
+        image=image_image_1
+        )
+
+        image_image_2 = PhotoImage(
+        file=relative_to_assets("image_3.png"))
+        image_2 = canvas.create_image(
+        13.0,
+        312.0,
+        image=image_image_2
+        )
+
+        canvas.create_text(
+        34.0,
+        279.0,
+        anchor="nw",
+        text="Childeren",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        image_image_3 = PhotoImage(
+        file=relative_to_assets("image_4.png"))
+        image_3 = canvas.create_image(
+        365.0,
+        312.0,
+        image=image_image_3
+        )
+
+        image_image_4 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+        image_4 = canvas.create_image(
+        34.0,
+        378.0,
+        image=image_image_4
+        )
+
+        image_image_5 = PhotoImage(
+        file=relative_to_assets("image_6.png"))
+        image_5 = canvas.create_image(
+        335.0,
+        377.0,
+        image=image_image_5
+        )
+
+        canvas.create_text(
+        61.0,
+        344.0,
+        anchor="nw",
+        text="Room",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        canvas.create_text(
+        362.0,
+        344.0,
+        anchor="nw",
+        text="Date",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+        self.window.resizable(False, False)
+        self.window.mainloop()
 
         
         
