@@ -12,6 +12,7 @@ db = mysql.connector.connect(
 mycursor = db.cursor()
 
 
+mycursor.execute("CREATE DATABASE DEMAND")
 
 class DATABASE:
     def __init__(self,messages):
