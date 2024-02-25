@@ -24,6 +24,7 @@ class Server:
              
             message = conn.recv(1024).decode('utf-8')
             
+            
             DATABASE(message)
             
             

@@ -221,7 +221,7 @@ class Page:
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_1 clicked"),
+        command=self.getInfo,
         relief="flat"
         )
         button_1.place(
@@ -238,13 +238,13 @@ class Page:
         313.0,
         image=entry_image_1
         )
-        entry_1 = Entry(
+        self.entry_1 = Entry(
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
         )
-        entry_1.place(
+        self.entry_1.place(
         x=41.0,
         y=294.0,
         width=201.0,
@@ -258,13 +258,13 @@ class Page:
         313.0,
         image=entry_image_2
         )
-        entry_2 = Entry(
+        self.entry_2 = Entry(
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
         )
-        entry_2.place(
+        self.entry_2.place(
         x=393.0,
         y=294.0,
         width=201.0,
@@ -287,13 +287,13 @@ class Page:
         378.0,
         image=entry_image_3
         )
-        entry_3 = Entry(
+        self.entry_3 = Entry(
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
         )
-        entry_3.place(
+        self.entry_3.place(
         x=66.0,
         y=359.0,
         width=201.0,
@@ -307,13 +307,13 @@ class Page:
         378.0,
         image=entry_image_4
         )
-        entry_4 = Entry(
+        self.entry_4 = Entry(
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
         )
-        entry_4.place(
+        self.entry_4.place(
         x=363.0,
         y=359.0,
         width=201.0,
@@ -388,6 +388,18 @@ class Page:
         )
         self.window.resizable(False, False)
         self.window.mainloop()
+
+
+
+    def getInfo(self):
+        child = self.entry_1.get()
+        adult = self.entry_2.get()
+        room = self.entry_3.get()
+        date = self.entry_4.get()
+
+        package = child + ',' + adult + ',' + room + ',' + date
+
+        data_server.send(package.encode('utf-8'))    
 
         
         
