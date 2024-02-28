@@ -23,7 +23,8 @@ mycursor_2 = db_2.cursor()
 class DATABASE:
     
     def __init__(self,messages):
-        
+        self.mycursor = mycursor
+        self.mycursor_2 = mycursor_2
         if len(str(messages).split(',')) == 3:
             self.People(messages)
         elif len(str(messages).split(',')) == 4:
@@ -35,14 +36,20 @@ class DATABASE:
     def People(self,messages):    
         messages = str(messages).split(',')
         
-        mycursor.execute("INSERT INTO people(Name,Username,Email) VALUES(%s,%s,%s)",(messages[0],messages[1],messages[2]))
+        self.mycursor.execute("INSERT INTO people(Name,Username,Email) VALUES(%s,%s,%s)",(messages[0],messages[1],messages[2]))
         db.commit()
+        
         
 
 
     def Demand(self,messages):
         messages = str(messages).split(',')
-        print(f"{messages}")
-        mycursor_2.execute("INSERT INTO request(Child,Adult,Room,Date) VALUES(%s,%s,%s,%s)",(messages[0],messages[1],messages[2],messages[3]))
+        self.mycursor_2.execute("INSERT INTO request(person_id,Child,Adult,Room,Date) VALUES(%s,%s,%s,%s,%s)",(self.mycursor.lastrowid,messages[0],messages[1],messages[2],messages[3]))
         db_2.commit()
+
+
+
+    
           
+
+        
