@@ -35,7 +35,7 @@ class DATABASE:
     
     def People(self,messages):    
         messages = str(messages).split(',')
-        print("geldim")
+        
         self.mycursor.execute("INSERT INTO people(Name,Username,Email) VALUES(%s,%s,%s)",(messages[0],messages[1],messages[2]))
         db.commit()
         
@@ -44,7 +44,7 @@ class DATABASE:
 
     def Request(self,messages):
         messages = str(messages).split(',')
-        print(f"AKSJDHASKJDHASKJDHASKJHASDKJHASDKJASHDKJAHDSKJADSHKJASDHKJASDHASKJDAHSDKJASDHKJsorun yok: {messages}")
+        
         self.mycursor_2.execute("INSERT INTO request(person_id,Child,Adult,Room,Date) VALUES(%s,%s,%s,%s,%s)",(self.mycursor.lastrowid,messages[0],messages[1],messages[2],messages[3]))
         db_2.commit()
 

@@ -205,18 +205,18 @@ class Page:
         self.frame.configure(bg="#FFFFFF")
         self.frame.pack()
         canvas = Canvas(
-        self.frame,
-        bg = "#FFFFFF",
-        height = 481,
-        width = 630,
-        bd = 0,
-        highlightthickness = 0,
-        relief = "ridge"
-        )
+            self.frame,
+            bg = "#FFFFFF",
+            height = 481,
+            width = 630,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+            )
 
         canvas.place(x = 0, y = 0)
         button_image_1 = PhotoImage(
-        file=relative_to_assets("button_2.png"))
+        file=relative_to_assets("button_1g.png"))
         button_1 = Button(
         image=button_image_1,
         borderwidth=0,
@@ -232,7 +232,7 @@ class Page:
         )
 
         entry_image_1 = PhotoImage(
-        file=relative_to_assets("entry_4.png"))
+        file=relative_to_assets("entry_1g.png"))
         entry_bg_1 = canvas.create_image(
         141.5,
         313.0,
@@ -252,7 +252,7 @@ class Page:
         )
 
         entry_image_2 = PhotoImage(
-        file=relative_to_assets("entry_5.png"))
+        file=relative_to_assets("entry_2g.png"))
         entry_bg_2 = canvas.create_image(
         493.5,
         313.0,
@@ -281,7 +281,7 @@ class Page:
         )
 
         entry_image_3 = PhotoImage(
-        file=relative_to_assets("entry_6.png"))
+        file=relative_to_assets("entry_3g.png"))
         entry_bg_3 = canvas.create_image(
         166.5,
         378.0,
@@ -301,7 +301,7 @@ class Page:
         )
 
         entry_image_4 = PhotoImage(
-        file=relative_to_assets("entry_7.png"))
+        file=relative_to_assets("entry_4g.png"))
         entry_bg_4 = canvas.create_image(
         463.5,
         378.0,
@@ -321,7 +321,7 @@ class Page:
         )
 
         image_image_1 = PhotoImage(
-        file=relative_to_assets("image_2.png"))
+        file=relative_to_assets("image_1g.png"))
         image_1 = canvas.create_image(
         315.0,
         130.0,
@@ -329,7 +329,7 @@ class Page:
         )
 
         image_image_2 = PhotoImage(
-        file=relative_to_assets("image_3.png"))
+        file=relative_to_assets("image_2g.png"))
         image_2 = canvas.create_image(
         13.0,
         312.0,
@@ -346,7 +346,7 @@ class Page:
         )
 
         image_image_3 = PhotoImage(
-        file=relative_to_assets("image_4.png"))
+        file=relative_to_assets("image_3g.png"))
         image_3 = canvas.create_image(
         365.0,
         312.0,
@@ -354,7 +354,7 @@ class Page:
         )
 
         image_image_4 = PhotoImage(
-        file=relative_to_assets("image_5.png"))
+        file=relative_to_assets("image_4g.png"))
         image_4 = canvas.create_image(
         34.0,
         378.0,
@@ -362,7 +362,7 @@ class Page:
         )
 
         image_image_5 = PhotoImage(
-        file=relative_to_assets("image_6.png"))
+        file=relative_to_assets("image_5g.png"))
         image_5 = canvas.create_image(
         335.0,
         377.0,
@@ -383,6 +383,33 @@ class Page:
         344.0,
         anchor="nw",
         text="Date",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        canvas.create_text(
+        216.0,
+        279.0,
+        anchor="nw",
+        text="+$5.00",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        canvas.create_text(
+        558.0,
+        279.0,
+        anchor="nw",
+        text="+$10.00",
+        fill="#000000",
+        font=("Inter", 12 * -1)
+        )
+
+        canvas.create_text(
+        236.0,
+        345.0,
+        anchor="nw",
+        text="+$50.00",
         fill="#000000",
         font=("Inter", 12 * -1)
         )
