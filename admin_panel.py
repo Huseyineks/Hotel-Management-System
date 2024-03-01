@@ -4,10 +4,7 @@ import threading
 from tkinter import *
 from tkinter import ttk
 from pathlib import Path
-HOST = socket.gethostbyname(socket.gethostname())
-PORT = 9090
-server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-server.bind((HOST,PORT))
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\hüseyin\Desktop\Hotel Management System\build\assets\frame0")
@@ -31,13 +28,13 @@ class Server:
         highlightthickness = 0,
         relief = "ridge"
         )
-        mycursor.execute("SELECT * FROM People")
+
         canvas.place(x = 0, y = 0)
         image_image_1 = PhotoImage(
         file=relative_to_assets("image_1v.png"))
         image_1 = canvas.create_image(
         401.0,
-        135.0,
+        124.0,
         image=image_image_1
         )
 
@@ -118,13 +115,7 @@ class Server:
         font=("Inter Bold", 40 * -1)
         )
 
-        image_image_6 = PhotoImage(
-        file=relative_to_assets("image_6v.png"))
-        image_6 = canvas.create_image(
-        401.0,
-        377.0,
-        image=image_image_6
-        )
+       
 
         image_image_7 = PhotoImage(
         file=relative_to_assets("image_7v.png"))
@@ -150,27 +141,74 @@ class Server:
         fill="#000000",
         font=("Inter Bold", 40 * -1)
         )
-        table = ttk.Treeview(window,show="headings")
-        table['columns'] = ("person_id","Name","Surname","Email")
+
+        button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1v.png"))
+        button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=self.refresh,
+        relief="flat",
+        bg="#EAEAEA"
+        )
+        button_1.place(
+        x=0.0,
+        y=225.0,
+        width=31.0,
+        height=24.0
+        )
+       
+        mycursor.execute("SELECT * FROM People")
+        self.table = ttk.Treeview(window,show="headings")
+        self.table['columns'] = ("person_id","Name","Surname","Email")
         
         
-        table.column("person_id",anchor=W,width=200)
-        table.column("Name",anchor=W,width=200)
-        table.column("Surname",anchor=W,width=200)
-        table.column("Email",anchor=W,width=200)
+        self.table.column("person_id",anchor=W,width=200)
+        self.table.column("Name",anchor=W,width=200)
+        self.table.column("Surname",anchor=W,width=200)
+        self.table.column("Email",anchor=W,width=200)
         
         
-        table.heading("person_id",text="person_id",anchor=W)
-        table.heading("Name",text="Name",anchor=W)
-        table.heading("Surname",text="Surname",anchor=W)
-        table.heading("Email",text="Email",anchor=W)
-        table.configure(height=10)
-        table.place(x = 0.0,y =271.0)
+        self.table.heading("person_id",text="person_id",anchor=W)
+        self.table.heading("Name",text="Name",anchor=W)
+        self.table.heading("Surname",text="Surname",anchor=W)
+        self.table.heading("Email",text="Email",anchor=W)
+        self.table.configure(height=10)
+        self.table.place(x = 0.0,y =256.0)
         for i,data in enumerate(mycursor):
-            table.insert(parent='',index='end',iid=i,values=(data[0],data[1],data[2],data[3]))
+            self.table.insert(parent='',index='end',iid=i,values=(data[0],data[1],data[2],data[3]))
         self.window.resizable(False, False)
         self.window.mainloop()
-        self.start()
+
+
+
+
+
+            
+    def refresh(self):
+        self.table.destroy()
+        mycursor.execute("SELECT * FROM People")
+        self.table = ttk.Treeview(self.window,show="headings")
+        self.table['columns'] = ("person_id","Name","Surname","Email")
+        
+        
+        self.table.column("person_id",anchor=W,width=200)
+        self.table.column("Name",anchor=W,width=200)
+        self.table.column("Surname",anchor=W,width=200)
+        self.table.column("Email",anchor=W,width=200)
+        
+        
+        self.table.heading("person_id",text="person_id",anchor=W)
+        self.table.heading("Name",text="Name",anchor=W)
+        self.table.heading("Surname",text="Surname",anchor=W)
+        self.table.heading("Email",text="Email",anchor=W)
+        self.table.configure(height=10)
+        self.table.place(x = 0.0,y =256.0)
+        for i,data in enumerate(mycursor):
+            self.table.insert(parent='',index='end',iid=i,values=(data[0],data[1],data[2],data[3]))
+            print(data)
+
             
         
         
@@ -194,26 +232,12 @@ class Server:
         return count     
 
 
-    def receive(self,conn,addr):
-        
-        while True:
-            
-                
-             
-            message = conn.recv(1024).decode('utf-8')
-            
-            
-            DATABASE(message)
+   
             
             
 
 
-    def start(self):
-        server.listen(5)
-        while True:
-           conn,addr = server.accept()
-           package = threading.Thread(target=self.receive,args=(conn,addr))
-           package.start()            
+   
 
     
         
