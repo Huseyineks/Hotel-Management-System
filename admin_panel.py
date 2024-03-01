@@ -187,27 +187,29 @@ class Server:
 
             
     def refresh(self):
-        self.table.destroy()
-        mycursor.execute("SELECT * FROM People")
-        self.table = ttk.Treeview(self.window,show="headings")
-        self.table['columns'] = ("person_id","Name","Surname","Email")
-        
-        
-        self.table.column("person_id",anchor=W,width=200)
-        self.table.column("Name",anchor=W,width=200)
-        self.table.column("Surname",anchor=W,width=200)
-        self.table.column("Email",anchor=W,width=200)
-        
-        
-        self.table.heading("person_id",text="person_id",anchor=W)
-        self.table.heading("Name",text="Name",anchor=W)
-        self.table.heading("Surname",text="Surname",anchor=W)
-        self.table.heading("Email",text="Email",anchor=W)
-        self.table.configure(height=10)
-        self.table.place(x = 0.0,y =256.0)
-        for i,data in enumerate(mycursor):
+        for row in self.table.get_children():
+            self.table.delete(row)
+
+
+        db.close()
+
+        db_newConnection = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            passwd = "huseyinilkerh1905",
+            database ="hotelmanagementdatabase"
+        )
+        newCursor = db_newConnection.cursor()  
+
+        newCursor.execute("SELECT * FROM People")  
+
+
+
+        for i,data in enumerate(newCursor):
             self.table.insert(parent='',index='end',iid=i,values=(data[0],data[1],data[2],data[3]))
-            print(data)
+          
+            
+            
 
             
         
